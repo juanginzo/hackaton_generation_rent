@@ -25,18 +25,6 @@ print(reviews2.shape)
 reviews2.head(3)
 
 
-# ### reviews.csv
-# 
-# Summary Review data and Listing ID (to facilitate time based analytics and visualisations linked to a listing).
-
-# In[59]:
-
-
-reviews = pd.read_csv('airbnb_data/reviews.csv')
-print(reviews.shape)
-reviews.head(3)
-
-
 # ### neighbourhoods.geojson
 # 
 # GeoJSON file of neighbourhoods of the city.
@@ -73,25 +61,6 @@ print(calendar.shape)
 calendar.head(3)
 
 
-# ### listings.csv
-# 
-# Summary information and metrics for listings in Edinburgh (good for visualisations).
-
-# In[31]:
-
-
-listings = pd.read_csv('airbnb_data/listings.csv')
-print(listings.shape)
-listings.head(1)
-
-
-# In[34]:
-
-
-for col in listings.columns:
-    print(col)
-
-
 # ### listings 2.csv 
 # 
 # Detailed Listings data for Edinburgh
@@ -104,9 +73,56 @@ print(listings2.shape)
 listings2.head(1)
 
 
-# In[30]:
+# In[61]:
 
 
-for col in listings2.columns[:5]:
+for col in listings2.columns:
     print(col)
+
+
+# In[104]:
+
+
+listings2['neighbourhood'].value_counts()
+
+
+# In[91]:
+
+
+listings2['zipcode'].map(lambda x: str(x).split(' ')[0]).value_counts()[:3]
+
+
+# ## EDA
+
+# In[87]:
+
+
+df = pd.read_csv('simd2016_withinds.csv')
+deprivation = df[df['Council_area'] == 'City_of_Edinburgh']
+deprivation.head()
+
+
+# In[105]:
+
+
+deprivation['Intermediate_Zone'].value_counts()
+
+
+# In[117]:
+
+
+deprivation.shape
+
+
+# In[116]:
+
+
+deprivation.head()
+
+
+# In[118]:
+
+
+simd16 = pd.read_csv('simd16.csv')
+simd16.head()
 
