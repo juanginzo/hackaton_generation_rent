@@ -1,16 +1,167 @@
 <!doctype html>
+<style>
+body { 
+margin: 0 auto; 
+width:400px;
+}
+
+h1 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 35px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
+
+
+h2 { color: #111; font-family: 'Open Sans', sans-serif; font-size: 25px; font-weight: 300; line-height: 32px; margin: 0 0 72px; text-align: center; }
+
+
+p { color: #685206; font-family: 'Helvetica Neue', sans-serif; font-size: 14px; line-height: 24px; margin: 0 0 24px;  }
+
+</style>
+
 <html>
   <head>
-    <title>Tax Avoidance Prediction</title>
+    <title>Racket: Tax Evasion Prediction</title>
   </head>
-  <body>
-
+ <body background="tax-avoidance.png">
+    <h1>
+Racket: Tax Evasion Prediction
+    </h1>
     <form action="http://localhost:4000/predict" method="POST">
-      <p>Post Code<input type="text" name="post_code" /></p>
+	    <p style="MARGIN-LEFT: 0.25in; BACKGROUND-COLOR:orange;">Declared gross income <input type="number" name="declared"><p/>
+    <p>
+    Please enter the property characteristics
+    </p>
+	    
       <p>Number of rooms<input type="number" name="n_rooms" /></p>
+      
+      <p>Quoted price per night<input type="number" name="price" /></p>
+      <p>Minimum Stay<input type="number" name="minimum_nights" /></p>
+      <p>Host properties<input type="number" name="" /></p>
+      
+      <p>Type of rental
+      <input list="rental_type">
+  	<datalist id="rental_type">
+	    <option value="Whole Property" selected>
+	    <option value="Private Room">
+	    <option value="Shared Room">
+	  </datalist> 
+      </p>
 
-      <p><input type="submit" value="submit" /></p>
+      <p>Neighbourhood      
+      <input list="neighbourhood">
+  	<datalist id="neighbourhood">
+	<option value="Abbeyhill">
+	<option value="Baberton and Juniper Green">
+	<option value="Balerno and Bonnington Village">
+	<option value="Balgreen and Roseburn">
+	<option value="Barnton, Cammo and Cramond South">
+	<option value="Bingham, Magdalene and The Christians">
+	<option value="Blackford, West Mains and Mayfield Road">
+	<option value="Blackhall">
+	<option value="Bonaly and The Pentlands">
+	<option value="Bonnington">
+	<option value="Boswall and Pilton">
+	<option value="Broomhouse and Bankhead">
+	<option value="Broughton North and Powderhall">
+	<option value="Broughton South">
+	<option value="Bruntsfield">
+	<option value="Canongate, Southside and Dumbiedykes">
+	<option value="Canonmills and New Town North">
+	<option value="Carrick Knowe">
+	<option value="Clermiston and Drumbrae">
+	<option value="Clovenstone and Wester Hailes">
+	<option value="Colinton Mains and Firrhill">
+	<option value="Colinton and Kingsknowe">
+	<option value="Comely Bank">
+	<option value="Comiston and Swanston">
+	<option value="Corstorphine">
+	<option value="Corstorphine North">
+	<option value="Corstorphine South">
+	<option value="Craigentinny">
+	<option value="Craigleith, Orchard Brae and Crewe Toll">
+	<option value="Craiglockhart">
+	<option value="Craigmillar">
+	<option value="Cramond">
+	<option value="Currie East">
+	<option value="Currie West">
+	<option value="Dalmeny, Kirkliston and Newbridge">
+	<option value="Dalry and Fountainbridge">
+	<option value="Deans Village">
+	<option value="Drylaw">
+	<option value="Duddingston and Portobello South">
+	<option value="East Craigs North">
+	<option value="East Craigs South">
+	<option value="Easter Road and Hawkhill Avenue">
+	<option value="Fairmilehead">
+	<option value="Fernieside and Moredun South">
+	<option value="Gilmerton South and the Murrays">
+	<option value="Gorgie East">
+	<option value="Gorgie West">
+	<option value="Gracemount, Southhouse and Burdiehouse">
+	<option value="Granton South and Wardieburn">
+	<option value="Granton West and Salvesen">
+	<option value="Granton and Royston Mains">
+	<option value="Great Junction Street">
+	<option value="Greenbank and The Braids">
+	<option value="Hillside and Calton Hill">
+	<option value="Hyvots and Gilmerton">
+	<option value="Inverleith, Goldenacre and Warriston">
+	<option value="Jewel, Brunstane and Newcraighall">
+	<option value="Joppa">
+	<option value="Leith (Albert Street)">
+	<option value="Leith (Hermitage and Prospect Bank)">
+	<option value="Liberton East">
+	<option value="Liberton West and Braid Hills">
+	<option value="Longstone and Saughton">
+	<option value="Marchmont East and Sciennes">
+	<option value="Marchmont West">
+	<option value="Meadowbank and Abbeyhill North">
+	<option value="Meadows and Southside">
+	<option value="Merchiston and Greenhill">
+	<option value="Moredun and Craigour">
+	<option value="Morningside">
+	<option value="Morningside and Craighouse">
+	<option value="Mortonhall and Anwickhill">
+	<option value="Mountcastle">
+	<option value="Muirhouse">
+	<option value="Murrayburn and Wester Hailes North">
+	<option value="Murrayfield and Ravelston">
+	<option value="New Town East and Gayfield">
+	<option value="New Town West">
+	<option value="Newington and Dalkeith Road">
+	<option value="Niddrie">
+	<option value="North Leith and Newhaven">
+	<option value="Northfield and Piershill">
+	<option value="Old Town, Princes Street and Leith Street">
+	<option value="Oxgangs">
+	<option value="Parkhead and Sighthill">
+	<option value="Pilrig">
+	<option value="Polwarth">
+	<option value="Portobello">
+	<option value="Prestonfield">
+	<option value="Queensferry East">
+	<option value="Queensferry West">
+	<option value="Ratho, Ingliston and Gogar">
+	<option value="Restalrig (Loganlea) and Craigentinny West">
+	<option value="Restalrig and Lochend">
+	<option value="Shandon">
+	<option value="Siverknowes and Davidson's Mains">
+	<option value="Slateford and Chesser">
+	<option value="South Gyle">
+	<option value="South Leith">
+	<option value="Stenhouse and Saughton Mains">
+	<option value="Stockbridge">
+	<option value="The Calders">
+	<option value="The Grange">
+	<option value="The Inch">
+	<option value="The Shore and Constitution Street">
+	<option value="Tollcross">
+	<option value="Trinity">
+	<option value="Trinity East and The Dudleys">
+	<option value="West Pilton">
+	<option value="Western Harbour and Leith Docks">
+	<option value="Willowbrae and Duddingston Village">
+	</p>
+
+      <p><input type="submit" value="predict!" /></p>
     </form>
-
+<input type="submit" value="submit bulk data" />
   </body>
 </html>

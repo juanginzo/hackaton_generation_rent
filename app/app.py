@@ -46,11 +46,9 @@ def page():
 def predict():
     '''Gets prediction using the HTML form'''
     if flask.request.method == 'POST':
-        #import ipdb;ipdb.set_trace()
-        post_code = flask.request.form['post_code']
-        n_rooms = flask.request.form['n_rooms']
+        #post_code = flask.request.form['post_code']
 
-        items = transform_input(post_code, n_rooms)
+        items = transform_input()
         predicted_price = PREDICTOR.predict(items)
         results = {'predicted_rental_income': list(predicted_price)[0] }
         return flask.jsonify(results)
